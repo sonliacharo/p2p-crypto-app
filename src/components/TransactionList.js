@@ -6,6 +6,7 @@ const List = styled.ul`
   list-style-type: none;
   padding: 0;
   margin-top: 20px;
+  width: 100%; /* Ocupa toda a largura disponível */
 `;
 
 const ListItem = styled.li`
@@ -73,3 +74,4 @@ const TransactionList = () => {
 };
 
 export default TransactionList;
+

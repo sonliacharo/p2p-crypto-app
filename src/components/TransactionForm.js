@@ -7,12 +7,16 @@ import styled from 'styled-components';
 const Form = styled.form`
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 20px;
   margin-bottom: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
   background-color: #fff;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
 `;
 
 const Input = styled.input`
@@ -20,6 +24,8 @@ const Input = styled.input`
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box;
 `;
 
 const Button = styled.button`

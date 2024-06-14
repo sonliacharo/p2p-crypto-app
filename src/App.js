@@ -16,7 +16,7 @@ const App = () => {
           <Route path="/login" component={Login} />
           <Route path="/dashboard" component={Dashboard} />
           <Route exact path="/">
-            <Redirect to="/login" />
+            <Redirect to="/dashboard" />
           </Route>
           <Route path="*">
             <h1>404 Not Found</h1>
