@@ -1,26 +1,39 @@
+// src/components/Dashboard.js
 import React from 'react';
 import TransactionList from './TransactionList';
-import TransactionForm from './TransactionForm';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import TransactionForm from './TransactionForm';
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  min-height: 100vh;
+  justify-content: center;
+  height: 100vh;
+`;
+
+const MessageContainer = styled.div`
+  text-align: center; 
+`;
+
+const RegisterLink = styled(Link)`
+  color: #007bff;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 const Dashboard = () => {
   return (
     <Container>
-      <h1>Dashboard</h1>
-      <TransactionForm />
-      <TransactionList />
+      <h1>Nova Transação</h1>
+        <TransactionForm/>
+        <TransactionList />
+        <MessageContainer>
+          Não tem uma conta? <RegisterLink to="/register">Criar conta</RegisterLink>
+        </MessageContainer>
     </Container>
   );
 };

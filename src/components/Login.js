@@ -49,8 +49,12 @@ const Button = styled.button`
   }
 `;
 
-const RegisterLink = styled(Link)`
-  margin-top: 10px;
+const MessageContainer = styled.div`
+  margin-top: 20px;
+  text-align: center;
+`;
+
+const StyledLink = styled(Link)`
   color: #007bff;
   text-decoration: none;
   &:hover {
@@ -91,7 +95,9 @@ const Login = () => {
         />
         <Button type="submit">Login</Button>
       </Form>
-      <RegisterLink to="/register">Não possui uma conta? Cadastre-se</RegisterLink>
+      <MessageContainer>
+        Esqueceu sua senha? <StyledLink to="/reset-password">Redefinir senha</StyledLink>
+      </MessageContainer>
     </FormContainer>
   );
 };

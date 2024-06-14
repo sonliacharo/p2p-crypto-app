@@ -50,6 +50,11 @@ const Button = styled.button`
   }
 `;
 
+const MessageContainer = styled.div`
+  margin-top: 20px;
+  text-align: center; 
+`;
+
 const LoginLink = styled(Link)`
   margin-top: 10px;
   color: #007bff;
@@ -58,47 +63,6 @@ const LoginLink = styled(Link)`
     text-decoration: underline;
   }
 `;
-
-/*const Register = () => {
-  const { register } = React.useContext(AuthContext);
-
-  const formik = useFormik({
-    initialValues: { username: '', password: '' },
-    validationSchema: Yup.object({
-      username: Yup.string().required('Required'),
-      password: Yup.string().required('Required'),
-    }),
-    onSubmit: (values) => {
-      register(values.username, values.password);
-    },
-  });
-
-  return (
-    <FormContainer>
-      <Form onSubmit={formik.handleSubmit}>
-        <Input
-          type="text"
-          name="username"
-          placeholder="Nome de usuário"
-          onChange={formik.handleChange}
-          value={formik.values.username}
-        />
-        <Input
-          type="password"
-          name="password"
-          placeholder="Senha"
-          onChange={formik.handleChange}
-          value={formik.values.password}
-        />
-        <Button type="submit">Cadastrar</Button>
-      </Form>
-      <LoginLink to="/login">Já possui uma conta? Faça login</LoginLink>
-    </FormContainer>
-  );
-};
-
-export default Register;
-*/
 
 const Register = () => {
   const { register } = React.useContext(AuthContext);
@@ -194,7 +158,9 @@ const Register = () => {
         )}
         <Button type="submit">Cadastrar</Button>
       </Form>
-      <LoginLink to="/login">Já possui uma conta? Faça login</LoginLink>
+      <MessageContainer>
+        Já possui uma conta? <LoginLink to="/login">Faça login</LoginLink>
+      </MessageContainer>
     </FormContainer>
   );
 };
