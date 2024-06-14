@@ -46,6 +46,7 @@ const TransactionList = () => {
         setTransactions(response.data || []);
       } catch (error) {
         console.error('Error fetching transactions:', error);
+        setTransactions([]);
       }
     };
 
