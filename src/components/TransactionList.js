@@ -6,7 +6,7 @@ const List = styled.ul`
   list-style-type: none;
   padding: 0;
   margin-top: 20px;
-  width: 100%; /* Ocupa toda a largura disponível */
+  width: 100%;
 `;
 
 const ListItem = styled.li`
@@ -41,21 +41,33 @@ const TransactionList = () => {
 
   useEffect(() => {
     const fetchTransactions = async () => {
-      const response = await axios.get(`${apiUrl}/api/transactions`);
-      setTransactions(response.data);
+      try {
+        const response = await axios.get(`${apiUrl}/api/transactions`);
+        setTransactions(response.data || []);
+      } catch (error) {
+        console.error('Error fetching transactions:', error);
+      }
     };
 
     fetchTransactions();
   }, []);
 
   const handleAccept = async (transactionId) => {
-    await axios.post(`${apiUrl}/api/transactions/accept`, { transactionId });
-    setTransactions(transactions.filter(tx => tx._id !== transactionId));
+    try {
+      await axios.post(`${apiUrl}/api/transactions/accept`, { transactionId });
+      setTransactions(transactions.filter(tx => tx._id !== transactionId));
+    } catch (error) {
+      console.error('Error accepting transaction:', error);
+    }
   };
 
   const handleReject = async (transactionId) => {
-    await axios.post(`${apiUrl}/api/transactions/reject`, { transactionId });
-    setTransactions(transactions.filter(tx => tx._id !== transactionId));
+    try {
+      await axios.post(`${apiUrl}/api/transactions/reject`, { transactionId });
+      setTransactions(transactions.filter(tx => tx._id !== transactionId));
+    } catch (error) {
+      console.error('Error rejecting transaction:', error);
+    }
   };
 
   return (
@@ -74,4 +86,3 @@ const TransactionList = () => {
 };
 
 export default TransactionList;
-
