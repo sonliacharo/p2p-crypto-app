@@ -1,0 +1,115 @@
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+
+const Container = styled.div`
+  font-family: mono;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: #ffffff; /* Cor de fundo branca */
+  color: #1a1a1a; /* Cor do texto escura */
+  min-height: 100vh;
+`;
+
+const Header = styled.header`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  padding: 10px 20px; /* Diminuir o padding */
+  background-color: #000000; /* Cor de fundo preta */
+  color: #ffffff; /* Cor do texto clara */
+  box-shadow: none; /* Remover a linha inferior */
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+`;
+
+const Logo = styled(Link)`
+  padding: 10px 20px;
+  font-size: 1.5em;
+  font-weight: bold;
+  text-decoration: none;
+  margin: 0;
+  color: #ffffff; /* Cor do texto clara */
+`;
+
+const Nav = styled.nav`
+  display: flex;
+  gap: 20px;
+`;
+
+const CTAButton = styled(Link)`
+  padding: 10px 20px;
+  background-color: #008000; /* Verde escuro */
+  color: #ffffff; /* Cor do texto clara */
+  text-decoration: none;
+  font-size: 1.2em;
+  border-radius: 5px;
+  &:hover {
+    background-color: #006400; /* Tom mais escuro ao passar o mouse */
+  }
+`;
+
+const LoginButton = styled(Link)`
+  padding: 10px 20px;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1.2em;
+  border-radius: 5px;
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
+const AboutSection = styled.section`
+  font-size: 1.2em;
+  text-align: justify;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: #ffffff;
+  color: #1a1a1a;
+  margin-top: 80px; /* Espaço para a navbar fixa */
+  min-height: 100vh; /* Ocupa pelo menos toda a altura da viewport */
+`;
+
+const SectionTitle = styled.h2`
+  font-size: 3em;
+  margin-bottom: 20px;
+`;
+
+const SectionText = styled.p`
+  font-size: 1.2em;
+  max-width: 800px;
+  margin: 0 auto 20px auto;
+  line-height: 1.5;
+  color: #555555;
+`;
+
+const About = () => {
+  return (
+    <Container>
+      <Header>
+        <Logo to="/">PayChain</Logo>
+        <Nav>
+          <CTAButton to="/register">Cadastre-se</CTAButton>
+          <LoginButton to="/login">Login</LoginButton>
+        </Nav>
+      </Header>
+      <AboutSection>
+        <SectionTitle>Sobre Nós</SectionTitle>
+        <SectionText>
+          Nós, os responsáveis pelo trabalho, somos Alison Rocha e Natanael Oliveira, estudantes do primeiro período de Engenharia de Software da Universidade Católica do Salvador. Desenvolvemos esse projeto para a disciplina de Introdução a Engenharia de Software, orientados pelo professor Haroldo Peon.
+        </SectionText>
+      </AboutSection>
+    </Container>
+  );
+};
+
+export default About;
