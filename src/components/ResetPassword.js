@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import LogoPayChain from '../utils/LogoPayChain';
 
 const FormContainer = styled.div`
+  font-family: mono;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,6 +31,7 @@ const Form = styled.form`
 `;
 
 const Input = styled.input`
+  font-size:1em;
   margin-bottom: 20px;
   padding: 15px;
   border: 1px solid #ccc;
@@ -41,15 +43,16 @@ const Input = styled.input`
 `;
 
 const Button = styled.button`
+  font-size:1.2em;
   padding: 15px;
-  background-color: #007bff;
+  background-color: #008000;
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   width: 100%;
   &:hover {
-    background-color: #0056b3;
+    background-color: #006400;
   }
 `;
 
@@ -60,11 +63,20 @@ const MessageContainer = styled.div`
 
 const LoginLink = styled(Link)`
   margin-top: 10px;
-  color: #007bff;
+  color: #008000;
   text-decoration: none;
   &:hover {
     text-decoration: underline;
   }
+`;
+
+const Footer = styled.footer`
+  font-size: 0.8em;
+  padding: 20px;
+  background-color: #ffffff; /* Fundo preto */
+  color: #000000; /* Cor do texto clara */
+  text-align: center;
+  width: 100%;
 `;
 
 const ResetPassword = () => {
@@ -95,11 +107,14 @@ const ResetPassword = () => {
         {formik.errors.email && formik.touched.email && (
           <div>{formik.errors.email}</div>
         )}
-        <Button type="submit">Resetar Senha</Button>
+        <Button type="submit">Enviar link de recuperação</Button>
       </Form>
       <MessageContainer>
         Lembrou sua senha? <LoginLink to="/login">Faça login</LoginLink>
       </MessageContainer>
+      <Footer>
+        <p>🔒 Seus dados são criptografados</p>
+      </Footer>
     </FormContainer>
   );
 };

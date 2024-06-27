@@ -56,6 +56,15 @@ const Button = styled.button`
   }
 `;
 
+const Footer = styled.footer`
+  font-size: 0.8em;
+  padding: 20px;
+  background-color: #ffffff; /* Fundo preto */
+  color: #000000; /* Cor do texto clara */
+  text-align: center;
+  width: 100%;
+`;
+
 const Dashboard = () => {
   const formik = useFormik({
     initialValues: {
@@ -85,6 +94,9 @@ const Dashboard = () => {
         )}
         <Button type="submit">Transferir</Button>
       </Form>
+      <Footer>
+        <p>🔒 Seus dados são criptografados</p>
+      </Footer>
     </DashboardContainer>
   );
 };

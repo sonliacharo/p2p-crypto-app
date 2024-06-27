@@ -67,7 +67,6 @@ const MessageContainerB = styled.div`
   text-align: center; 
 `;
 
-
 const RegisterLink = styled(Link)`
   margin-top: 10px;
   color: #008000;
@@ -75,6 +74,15 @@ const RegisterLink = styled(Link)`
   &:hover {
     text-decoration: underline;
   }
+`;
+
+const Footer = styled.footer`
+  font-size: 0.8em;
+  padding: 20px;
+  background-color: #ffffff; /* Fundo preto */
+  color: #000000; /* Cor do texto clara */
+  text-align: center;
+  width: 100%;
 `;
 
 const Login = () => {
@@ -126,6 +134,9 @@ const Login = () => {
       <MessageContainerB>
         Esqueceu a senha? <RegisterLink to="/reset-password">Recuperar senha</RegisterLink>
       </MessageContainerB>
+      <Footer>
+        <p>🔒 Seus dados são criptografados</p>
+      </Footer>
     </FormContainer>
   );
 };

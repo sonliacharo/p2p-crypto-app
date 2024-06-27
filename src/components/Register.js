@@ -58,7 +58,7 @@ const Button = styled.button`
 `;
 
 const MessageContainer = styled.div`
-  font-size: 1.2em;
+  font-size: 1em;
   margin-top: 20px;
   text-align: center; 
 `;
@@ -70,6 +70,15 @@ const LoginLink = styled(Link)`
   &:hover {
     text-decoration: underline;
   }
+`;
+
+const Footer = styled.footer`
+  font-size: 0.8em;
+  padding: 20px;
+  background-color: #ffffff; /* Fundo preto */
+  color: #000000; /* Cor do texto clara */
+  text-align: center;
+  width: 100%;
 `;
 
 const Register = () => {
@@ -170,6 +179,9 @@ const Register = () => {
       <MessageContainer>
         Já possui uma conta? <LoginLink to="/login">Faça login</LoginLink>
       </MessageContainer>
+      <Footer>
+        <p>🔒 Seus dados são criptografados</p>
+      </Footer>
     </FormContainer>
   );
 };

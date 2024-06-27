@@ -14,10 +14,9 @@ const Container = styled.div`
 
 const Header = styled.header`
   display: flex;
-  justify-content: space-between;
+  justify-content: center; /* Centraliza o contêiner */
   align-items: center;
   width: 100%;
-  max-width: 1200px;
   padding: 10px 20px; /* Diminuir o padding */
   background-color: #000000; /* Cor de fundo preta */
   color: #ffffff; /* Cor do texto clara */
@@ -25,6 +24,14 @@ const Header = styled.header`
   position: fixed;
   top: 0;
   z-index: 1000;
+`;
+
+const ContainerNav = styled.div`
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between; /* Ajusta os elementos dentro do contêiner */
+  align-items: center;
 `;
 
 const Logo = styled(Link)`
@@ -66,7 +73,7 @@ const FinalSectionButton = styled(Link)`
 `;
 
 const LoginButton = styled(Link)`
-  padding: 10px 5px;
+  padding: 10px 25px;
   color: #ffffff;
   text-decoration: none;
   font-size: 1.2em;
@@ -168,12 +175,14 @@ const Home = () => {
   return (
     <Container>
       <Header>
-        <Logo to="/">PayChain</Logo>
-        <Nav>
-          <AboutButton to="/about">Sobre Nós</AboutButton>
-          <CTAButton to="/register">Cadastre-se</CTAButton>
-          <LoginButton to="/login">Login</LoginButton>
-        </Nav>
+        <ContainerNav>
+          <Logo to="/">PayChain</Logo>
+          <Nav>
+            <AboutButton to="/about">Sobre Nós</AboutButton>
+            <CTAButton to="/register">Cadastre-se</CTAButton>
+            <LoginButton to="/login">Login</LoginButton>
+          </Nav>
+        </ContainerNav>
       </Header>
       <Hero>
         <HeroTitle>Bem-vindo ao PayChain</HeroTitle>
