@@ -94,16 +94,16 @@ const Register = () => {
       passwordConfirmation: ''
     },
     validationSchema: Yup.object({
-      firstName: Yup.string().required('Required'),
-      lastName: Yup.string().required('Required'),
+      firstName: Yup.string().required('Obrigatório'),
+      lastName: Yup.string().required('Obrigatório'),
       cpf: Yup.string()
-        .required('Required')
-        .matches(/^\d{3}\.\d{3}\.\d{3}\-\d{2}$/, 'Invalid CPF format (###.###.###-##)'),
-      username: Yup.string().required('Required'),
-      password: Yup.string().required('Required').min(6, 'Password must be at least 6 characters'),
+        .required('RObrigatório')
+        .matches(/^\d{3}\.\d{3}\.\d{3}\-\d{2}$/, 'Formato de CPF inválido (###.###.###-##)'),
+      username: Yup.string().required('Obrigatório'),
+      password: Yup.string().required('Obrigatório').min(6, 'A senha deve ter pelo menos 6 caracteres'),
       passwordConfirmation: Yup.string()
-        .oneOf([Yup.ref('password'), null], 'Passwords must match')
-        .required('Required')
+        .oneOf([Yup.ref('Obrigatório'), null], 'As senhas devem ser iguais')
+        .required('Obrigatório')
     }),
     onSubmit: (values) => {
       register(values.firstName, values.lastName, values.cpf, values.username, values.password, values.passwordConfirmation)
