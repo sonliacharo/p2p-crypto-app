@@ -223,8 +223,8 @@ const Home = () => {
           <Logo to="/">PayChain</Logo>
           <Nav>
             <AboutButton to="/about">Sobre Nós</AboutButton>
-            <CTAButton to="/register">Cadastre-se</CTAButton>
             <LoginButton to="/login">Login</LoginButton>
+            <CTAButton to="/register">Cadastre-se</CTAButton>
           </Nav>
         </ContainerNav>
       </Header>
