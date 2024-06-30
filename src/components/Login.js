@@ -119,7 +119,7 @@ const Login = () => {
         <Input
           type="text"
           name="username"
-          placeholder="Nome de usuário"
+          placeholder="Email"
           onChange={formik.handleChange}
           value={formik.values.username}
         />

@@ -229,7 +229,7 @@ const Home = () => {
         </ContainerNav>
       </Header>
       <Hero>
-        <HeroTitle>Bem-vindo ao PayChain</HeroTitle>
+        <HeroTitle>Bem-vindo a PayChain</HeroTitle>
         <HeroSubtitle>
           A plataforma segura para transações financeiras
         </HeroSubtitle>
