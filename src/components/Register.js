@@ -1,9 +1,10 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { useContext, useState } from 'react';
 import { AuthContext } from './AuthContext';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import LogoPayChain from '../utils/LogoPayChain';
 
 const FormContainer = styled.div`
@@ -82,14 +83,16 @@ const Footer = styled.footer`
 `;
 
 const Register = () => {
-  const { register } = React.useContext(AuthContext);
+  const { register } = useContext(AuthContext);
+  const [registrationSuccess, setRegistrationSuccess] = useState(false);
+  const [registered, setRegistered] = useState(false);
 
   const formik = useFormik({
     initialValues: {
       firstName: '',
       lastName: '',
       cpf: '',
-      username: '',
+      email: '',
       password: '',
       passwordConfirmation: ''
     },
@@ -97,18 +100,28 @@ const Register = () => {
       firstName: Yup.string().required('Obrigatório'),
       lastName: Yup.string().required('Obrigatório'),
       cpf: Yup.string()
-        .required('RObrigatório')
+        .required('Obrigatório')
         .matches(/^\d{3}\.\d{3}\.\d{3}\-\d{2}$/, 'Formato de CPF inválido (###.###.###-##)'),
-      username: Yup.string().required('Obrigatório'),
+      email: Yup.string().email('Email inválido').required('Obrigatório'),
       password: Yup.string().required('Obrigatório').min(6, 'A senha deve ter pelo menos 6 caracteres'),
       passwordConfirmation: Yup.string()
-        .oneOf([Yup.ref('Obrigatório'), null], 'As senhas devem ser iguais')
+        .oneOf([Yup.ref('password'), null], 'As senhas devem ser iguais')
         .required('Obrigatório')
     }),
-    onSubmit: (values) => {
-      register(values.firstName, values.lastName, values.cpf, values.username, values.password, values.passwordConfirmation)
+    onSubmit: async (values) => {
+      try {
+        await register(values.firstName, values.lastName, values.cpf, values.email, values.password);
+        setRegistrationSuccess(true);
+        setRegistered(true);
+      } catch (error) {
+        console.error('Erro ao registrar usuário', error);
+      }
     },
   });
+
+  if (registered) {
+    return <Redirect to="/login" />;
+  }
 
   return (
     <FormContainer>
@@ -146,13 +159,13 @@ const Register = () => {
         )}
         <Input
           type="text"
-          name="username"
-          placeholder="Nome de usuário"
+          name="email"
+          placeholder="Email"
           onChange={formik.handleChange}
-          value={formik.values.username}
+          value={formik.values.email}
         />
-        {formik.errors.username && formik.touched.username && (
-          <div>{formik.errors.username}</div>
+        {formik.errors.email && formik.touched.email && (
+          <div>{formik.errors.email}</div>
         )}
         <Input
           type="password"
@@ -182,6 +195,7 @@ const Register = () => {
       <Footer>
         <p>🔒 Seus dados são criptografados</p>
       </Footer>
+      {registrationSuccess && <p>Usuário cadastrado com sucesso!</p>}
     </FormContainer>
   );
 };

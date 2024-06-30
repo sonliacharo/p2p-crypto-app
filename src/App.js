@@ -1,10 +1,9 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import { AuthProvider } from './components/AuthContext';
 import Register from './components/Register';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
-import Notification from './components/Notification';
 import ResetPassword from './components/ResetPassword';
 import HomePage from './components/HomePage';
 import Profile from './components/Profile';
@@ -28,7 +27,6 @@ const App = () => {
             <h1>404 Not Found</h1>
           </Route>
         </Switch>
-        <Notification />
       </Router>
     </AuthProvider>
   );

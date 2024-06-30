@@ -8,8 +8,10 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
-  background-color: #000000; /* Cor de fundo branca */
+  background-color: #000000; /* Cor de fundo preta */
   color: #1a1a1a; /* Cor do texto escura */
+
+  padding-top: 60px; /* Ajuste para compensar a navbar */
 `;
 
 const Header = styled.header`
@@ -24,6 +26,10 @@ const Header = styled.header`
   position: fixed;
   top: 0;
   z-index: 1000;
+
+  @media (max-width: 768px) {
+    padding: 10px 10px; /* Ajuste do padding para telas menores */
+  }
 `;
 
 const ContainerNav = styled.div`
@@ -41,6 +47,10 @@ const Logo = styled(Link)`
   text-decoration: none;
   margin: 0;
   color: #ffffff; /* Cor do texto clara */
+
+  @media (max-width: 768px) {
+    font-size: 1.2em; /* Reduzir o tamanho da fonte para telas menores */
+  }
 `;
 
 const Nav = styled.nav`
@@ -58,17 +68,10 @@ const CTAButton = styled(Link)`
   &:hover {
     background-color: #006400; /* Tom mais escuro ao passar o mouse */
   }
-`;
 
-const FinalSectionButton = styled(Link)`
-  padding: 10px 20px;
-  background-color: #008000; /* Verde escuro */
-  color: #ffffff; /* Cor do texto clara */
-  text-decoration: none;
-  font-size: 1.2em;
-  border-radius: 5px;
-  &:hover {
-    background-color: #006400; /* Tom mais escuro ao passar o mouse */
+  @media (max-width: 768px) {
+    font-size: 1em; /* Reduzir o tamanho do botão para telas menores */
+    padding: 8px 16px; /* Ajuste do padding para telas menores */
   }
 `;
 
@@ -80,6 +83,11 @@ const LoginButton = styled(Link)`
   &:hover {
     text-decoration: underline;
   }
+
+  @media (max-width: 768px) {
+    padding: 8px 16px; /* Ajuste do padding para telas menores */
+    font-size: 1em; /* Reduzir o tamanho do texto para telas menores */
+  }
 `;
 
 const AboutButton = styled(Link)`
@@ -90,19 +98,30 @@ const AboutButton = styled(Link)`
   &:hover {
     text-decoration: underline;
   }
+
+  @media (max-width: 768px) {
+    padding: 8px 20px; /* Ajuste do padding para telas menores */
+    font-size: 1em; /* Reduzir o tamanho do texto para telas menores */
+  }
 `;
 
 const Hero = styled.section`
+  padding: 40px 20px; /* Diminuir o padding */
+  min-height: 90vh; /* Diminuir a altura mínima */
   display: flex;
+  width: 100%;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  height: calc(100vh - 60px); /* Ajuste para compensar a navbar */
-  padding: 20px;
-  background: url('hero-background.jpg') no-repeat center center;
-  background-size: cover;
-  color: #ffffff;
+  justify-content: center;
+  background-color: #000000; /* Fundo preto */
+  color: #ffffff; /* Cor do texto escura */
   margin-top: 60px; /* Espaço para a navbar fixa */
+
+  @media (max-width: 768px) {
+    padding: 30px 10px; /* Ajuste do padding para telas menores */
+    min-height: 80vh; /* Ajuste da altura mínima para telas menores */
+    margin-top: 50px; /* Ajuste do espaço para telas menores */
+  }
 `;
 
 const HeroTitle = styled.h2`
@@ -131,11 +150,16 @@ const Section = styled.section`
   justify-content: center;
   background-color: #ffffff; /* Fundo branco */
   color: #1a1a1a; /* Cor do texto escura */
+
+  @media (max-width: 768px) {
+    padding: 30px 10px; /* Ajuste do padding para telas menores */
+    min-height: 50vh; /* Ajuste da altura mínima para telas menores */
+  }
 `;
 
 const SectionText = styled.p`
   font-size: 1.5em;
-  max-width: 800px;
+  max-width: 1200px;
   margin: 0 auto 20px auto;
   line-height: 1.5;
   color: #555555;
@@ -152,6 +176,10 @@ const FinalSection = styled.section`
   background-color: #000000;
   color: #ffffff;
   flex-wrap: wrap;
+
+  @media (max-width: 768px) {
+    padding: 20px 10px; /* Ajuste do padding para telas menores */
+  }
 `;
 
 const FinalSectionTitle = styled.p`
@@ -161,6 +189,11 @@ const FinalSectionTitle = styled.p`
   line-height: 1.5;
   text-align: justify;
   margin: 0; /* Remover a margem */
+
+  @media (max-width: 768px) {
+    font-size: 1.2em; /* Reduzir o tamanho do texto para telas menores */
+    padding: 20px 10px; /* Ajuste do padding para telas menores */
+  }
 `;
 
 const Footer = styled.footer`
@@ -169,6 +202,17 @@ const Footer = styled.footer`
   color: #000000; /* Cor do texto clara */
   text-align: center;
   width: 100%;
+`;
+
+const SetaHero = styled.p`
+  font-size: 3em;
+  margin-top: 150px;
+  color: #ffffff;
+
+  @media (max-width: 768px) {
+    font-size: 2em; /* Reduzir o tamanho da fonte para telas menores */
+    margin-top: 100px; /* Ajuste da margem superior para telas menores */
+  }
 `;
 
 const Home = () => {
@@ -190,28 +234,44 @@ const Home = () => {
           A plataforma segura para transações financeiras
         </HeroSubtitle>
         <CTAButton to="/register">Cadastre-se agora</CTAButton>
+        <SetaHero> ↓ </SetaHero>
       </Hero>
       <Section>
         <SectionTitle>Evite golpes</SectionTitle>
         <SectionText>
-          Criptografe suas transações de maneira rápida e fácil
+          Na PayChain, proteger suas transações é simples e rápido. Usamos criptografia avançada para garantir que suas informações financeiras estejam sempre protegidas.
         </SectionText>
       </Section>
       <Section>
         <SectionTitle>Mais segurança para os seus dados e para o seu bolso</SectionTitle>
         <SectionText>
-          A PayChain oferece a melhor tecnologia para proteger suas transações online
+          A PayChain oferece a tecnologia mais avançada para manter suas compras online seguras. Nossa plataforma utiliza smart contracts e blockchain para garantir que cada transação seja criptografada de forma impenetrável.
         </SectionText>
       </Section>
       <Section>
         <SectionTitle>Tecnologia de ponta e inovadora</SectionTitle>
         <SectionText>
-          Para você não precisar se preocupar ao comprar online
+          Não se preocupe mais ao fazer compras online. Com a PayChain, você tem a tranquilidade de saber que suas transações são protegidas por tecnologia de ponta, proporcionando uma experiência segura e sem complicações.
+        </SectionText>
+      </Section>
+      <Section>
+        <SectionTitle>Rápido e fácil</SectionTitle>
+        <SectionText>
+          1. Crie sua conta e faça login
+        </SectionText>
+        <SectionText>
+          2. Informe sua chave PIX e valor da transação
+        </SectionText>
+        <SectionText>
+          3. Clique em transferir
+        </SectionText>
+        <SectionText>
+          Com apenas alguns passos simples, suas transações são protegidas automaticamente. Os smart contracts e a blockchain garantem que suas informações sejam criptografadas de maneira segura, proporcionando a você uma camada extra de segurança em cada operação realizada com a PayChain.
         </SectionText>
       </Section>
       <FinalSection>
         <FinalSectionTitle>Cadastre-se e tenha mais segurança em suas transações financeiras com a PayChain</FinalSectionTitle>
-        <FinalSectionButton to="/register">Cadastre-se agora</FinalSectionButton>
+        <CTAButton to="/register">Cadastre-se agora</CTAButton>
       </FinalSection>
       <Footer>
         <p>Todos os direitos reservados © 2024 PayChain</p>

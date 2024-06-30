@@ -3,19 +3,19 @@ const router = express.Router();
 const User = require('../models/User');
 
 router.post('/register', async (req, res) => {
-  const { firstName, lastName, cpf, username, password } = req.body;
+  const { firstName, lastName, cpf, email, password } = req.body;
 
   try {
-    const existingUser = await User.findOne({ username });
+    const existingUser = await User.findOne({ email });
     if (existingUser) {
-      return res.status(400).json({ message: 'Username já está em uso' });
+      return res.status(400).json({ message: 'Email já está cadastrado' });
     }
 
     const newUser = new User({
       firstName,
       lastName,
       cpf,
-      username,
+      email,
       password,
     });
 
@@ -26,6 +26,7 @@ router.post('/register', async (req, res) => {
       user: newUser,
     });
   } catch (error) {
+    console.error(error);
     res.status(500).json({ message: 'Erro ao registrar usuário', error });
   }
 });

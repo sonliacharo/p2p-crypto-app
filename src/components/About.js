@@ -86,7 +86,7 @@ const AboutSection = styled.section`
 `;
 
 const SectionTitle = styled.h2`
-  padding: 80px;
+  margin-top: 60px;
   font-size: 3em;
   margin-bottom: 20px;
 `;
@@ -105,6 +105,7 @@ const Footer = styled.footer`
   color: #000000; /* Cor do texto clara */
   text-align: center;
   width: 100%;
+  margin-top: 50px;
 `;
 
 const About = () => {
@@ -123,6 +124,10 @@ const About = () => {
         <SectionTitle>Quem somos?</SectionTitle>
         <SectionText>
           Nós, os responsáveis pelo trabalho, somos Alison Rocha e Natanael Oliveira, estudantes do primeiro período de Engenharia de Software da Universidade Católica do Salvador. Desenvolvemos esse projeto para a disciplina de Introdução a Engenharia de Software, orientados pelo professor Haroldo Peon.
+        </SectionText>
+        <SectionTitle>Sobre a PayChain</SectionTitle>
+        <SectionText>
+        A aplicação PayChain utiliza smart contracts para facilitar transações financeiras peer-to-peer (P2P) de maneira segura e eficiente. Os smart contracts são programas de computador implantados na blockchain que automatizam e garantem a execução de termos pré-definidos. No contexto do PayChain, eles criptografam as transações, protegendo os dados financeiros e assegurando que as condições acordadas entre as partes sejam cumpridas de forma transparente e descentralizada. Isso elimina a necessidade de intermediários e proporciona uma plataforma confiável para realizar transferências diretas de valor entre usuários, aproveitando a segurança e a imutabilidade da tecnologia blockchain.
         </SectionText>
       </AboutSection>
       <Footer>

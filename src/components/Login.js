@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { AuthContext } from './AuthContext';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import LogoPayChain from '../utils/LogoPayChain';
 
 const FormContainer = styled.div`
@@ -87,6 +87,7 @@ const Footer = styled.footer`
 
 const Login = () => {
   const { login } = useContext(AuthContext);
+  const [logged, setLogged] = useState(false);
 
   const formik = useFormik({
     initialValues: {
@@ -97,10 +98,19 @@ const Login = () => {
       username: Yup.string().required('Required'),
       password: Yup.string().required('Required')
     }),
-    onSubmit: (values) => {
-      login(values.username, values.password);
+    onSubmit: async (values) => {
+      try {
+        await login(values.username, values.password);
+        setLogged(true);
+      } catch (error) {
+        console.error('Erro ao fazer login', error);
+      } 
     },
   });
+
+  if (logged) {
+    return <Redirect to="/dashboard" />;
+  }
 
   return (
     <FormContainer>

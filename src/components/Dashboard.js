@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import styled from 'styled-components';
@@ -59,24 +59,54 @@ const Button = styled.button`
 const Footer = styled.footer`
   font-size: 0.8em;
   padding: 20px;
-  background-color: #ffffff; /* Fundo preto */
-  color: #000000; /* Cor do texto clara */
+  background-color: #ffffff;
+  color: #000000;
   text-align: center;
   width: 100%;
 `;
 
 const Dashboard = () => {
+  const [formattedAmount, setFormattedAmount] = useState('R$ 0,00');
+
   const formik = useFormik({
     initialValues: {
-      transaction: ''
+      transaction: '',
+      amount: ''
     },
     validationSchema: Yup.object({
-      transaction: Yup.string().required('Required')
+      transaction: Yup.string().required('Required'),
+      amount: Yup.number()
+        .typeError('Deve ser um valor numérico')
+        .positive('Deve ser um valor positivo')
+        .required('Required')
     }),
     onSubmit: (values) => {
       console.log(values);
     },
   });
+
+  const formatCurrency = (value) => {
+    const cleanedValue = value.replace(/[^\d]/g, '');
+
+    const amount = parseInt(cleanedValue, 10) / 100;
+
+    const formatted = amount.toLocaleString('pt-BR', {
+      style: 'currency',
+      currency: 'BRL',
+    });
+
+    return formatted;
+  };
+
+  const handleAmountChange = (e) => {
+    let value = e.target.value;
+
+    const formatted = formatCurrency(value);
+
+    setFormattedAmount(formatted);
+
+    formik.setFieldValue('amount', value);
+  };
 
   return (
     <DashboardContainer>
@@ -91,6 +121,16 @@ const Dashboard = () => {
         />
         {formik.errors.transaction && formik.touched.transaction && (
           <div>{formik.errors.transaction}</div>
+        )}
+        <Input
+          type="text"
+          name="amount"
+          placeholder="R$ 0,00"
+          onChange={handleAmountChange}
+          value={formattedAmount}
+        />
+        {formik.errors.amount && formik.touched.amount && (
+          <div>{formik.errors.amount}</div>
         )}
         <Button type="submit">Transferir</Button>
       </Form>

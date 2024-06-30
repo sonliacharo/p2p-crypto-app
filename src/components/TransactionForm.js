@@ -4,6 +4,8 @@ import * as Yup from 'yup';
 import axios from 'axios';
 import styled from 'styled-components';
 
+require('dotenv').config();
+
 const Form = styled.form`
   display: flex;
   flex-direction: column;

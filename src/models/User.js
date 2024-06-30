@@ -17,7 +17,7 @@ const userSchema = new Schema({
     required: true,
     match: /^\d{3}\.\d{3}\.\d{3}\-\d{2}$/,
   },
-  username: {
+  email: {
     type: String,
     required: true,
     unique: true,
