@@ -125,8 +125,8 @@ const Hero = styled.section`
 
 const HeroTitle = styled.h2`
   font-family: monospace, serif;
-  font-size: 3em;
-  margin-bottom: 20px;
+  font-size: 4em;
+  margin-bottom: 0px;
 `;
 
 const HeroSubtitle = styled.p`
