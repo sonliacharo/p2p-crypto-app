@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Container = styled.div`
-  font-family: mono;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -63,7 +62,7 @@ const CTAButton = styled(Link)`
   background-color: #008000; /* Verde escuro */
   color: #ffffff; /* Cor do texto clara */
   text-decoration: none;
-  font-size: 1.2em;
+  font-size: 1em;
   border-radius: 5px;
   &:hover {
     background-color: #006400; /* Tom mais escuro ao passar o mouse */
@@ -76,10 +75,10 @@ const CTAButton = styled(Link)`
 `;
 
 const LoginButton = styled(Link)`
-  padding: 10px 25px;
+  padding: 10px 20px;
   color: #ffffff;
   text-decoration: none;
-  font-size: 1.2em;
+  font-size: 1em;
   &:hover {
     text-decoration: underline;
   }
@@ -91,10 +90,10 @@ const LoginButton = styled(Link)`
 `;
 
 const AboutButton = styled(Link)`
-  padding: 10px 40px;
+  padding: 10px 5px;
   color: #ffffff; /* Cor do texto clara */
   text-decoration: none;
-  font-size: 1.2em;
+  font-size: 1em;
   &:hover {
     text-decoration: underline;
   }
@@ -125,11 +124,13 @@ const Hero = styled.section`
 `;
 
 const HeroTitle = styled.h2`
+  font-family: monospace, serif;
   font-size: 3em;
   margin-bottom: 20px;
 `;
 
 const HeroSubtitle = styled.p`
+  font-family: sans-serif;
   font-size: 1.5em;
   margin-bottom: 40px;
 `;
